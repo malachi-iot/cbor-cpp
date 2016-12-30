@@ -26,7 +26,11 @@ namespace cbor {
 
         virtual void on_bytes(unsigned char *data, int size) = 0;
 
+#ifdef SUPPRESS_STD_STRING
+        virtual void on_string(unsigned char *str, size_t size) = 0;
+#else
         virtual void on_string(std::string &str) = 0;
+#endif
 
         virtual void on_array(int size) = 0;
 
